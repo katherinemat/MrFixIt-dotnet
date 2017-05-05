@@ -28,6 +28,16 @@
         else
         {
             <p>This Job is claimed by @Job.Worker.FirstName @Job.Worker.LastName</p>
+
+            @if(Job.Completed)
+            {
+                <p>Completed</p>
+            }
+
+            @if (Job.Pending)
+            {
+                <p>@Job.Worker.FirstName is working on it.</p>
+            }
         }
 
         <hr />

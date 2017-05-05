@@ -1,9 +1,10 @@
 ﻿body {
     padding-top: 70px;
-    color: red;
+    color: black;
+    font-family: 'Handlee', sans-serif;
 }
 
-.disclaimer {
-    text-align: center;
-    color: blue;
+h1, h2, h3, h4 {
+    font-family: 'Permanent Marker', sans-serif;
 }
+

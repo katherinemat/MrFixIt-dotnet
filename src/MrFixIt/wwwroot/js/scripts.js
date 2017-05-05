@@ -59,5 +59,4 @@
         });
     });
 
-    //$('.activated-' + jobId).remove();
 });
