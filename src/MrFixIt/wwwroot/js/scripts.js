@@ -1,12 +1,12 @@
 ﻿$(document).ready(function () {
-    console.log("hey");
-    $('.edit-form').click(function (event) {
+    $('.claim-job').click(function (event) {
+        var jobId = this.value;
         $.ajax({
             type: 'GET',
             dataType: 'html',
-            url: '/Cupcake/Edit/' + this.value,
+            url: '/Jobs/Claim/' + jobId,
             success: function (result) {
-                $('.return-edit').html(result);
+                $('.job-' + jobId).html(result);
             }
         });
     });
