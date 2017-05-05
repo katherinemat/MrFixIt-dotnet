@@ -40,6 +40,9 @@ namespace MrFixIt
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            var context = app.ApplicationServices.GetService<MrFixItContext>();
+            AddTestData(context);
+
             app.UseStaticFiles();
             loggerFactory.AddConsole();
             if (env.IsDevelopment())
@@ -57,6 +60,17 @@ namespace MrFixIt
             {
                 await error.Response.WriteAsync("You should not see this message. An error has occured.");
             });
+        }
+
+        private static void AddTestData(MrFixItContext context)
+        {
+            context.Database.ExecuteSqlCommand("Delete From Jobs");
+
+            var job1 = new Job("Fix sink", "My sink has been leaking non-stop. Very old plumbing, so I need someone to bring old parts or replace the whole system with something newer");
+            context.Jobs.Add(job1);
+
+            
+            context.SaveChanges();
         }
     }
 }

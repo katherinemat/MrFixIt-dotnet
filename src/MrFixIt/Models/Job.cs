@@ -16,6 +16,19 @@ namespace MrFixIt.Models
         public bool Pending { get; set; }
         public virtual Worker Worker { get; set; }
 
+        public Job(string _title, string _description)
+        {
+            Title = _title;
+            Description = _description;
+            Completed = false;
+            Pending = false;
+        }
+
+        public Job()
+        {
+
+        }
+
         //since starting the .net unit, we haven't been storing methods in the class.cs document. This method could go into the controller upon refactoring?
         public Worker FindWorker(string UserName)
         {
