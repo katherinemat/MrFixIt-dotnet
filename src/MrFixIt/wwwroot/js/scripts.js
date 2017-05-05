@@ -36,11 +36,28 @@
             type: 'POST',
             dataType: 'json',
             success: function (result) {
-                $('.temporary-activated-job').html('<h4>' + result.title + '</h4>');
+                $('.temporary-activated-job').html('<h4>' + result.title + '</h4><button class="complete-job" value="' + jobId + '">Mark job complete</button>');
+                
+                $('.unstarted-' + jobId).remove();
                 console.log(result);
             }
         });
     });
 
-    //$('.all-' + jobId).remove();
+    $('.complete-job').click(function (event) {
+        var jobId = this.value;
+        console.log(jobId);
+        $.ajax({
+            url: '/Jobs/Complete/' + jobId,
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+                $('.temporary-completed-job').html('<h4>' + result.title + '</h4>');
+                $('.activated-' + jobId).remove();
+                $('.worker-available').html('<h2>You don\'t have any activated jobs. Please <a href="/Jobs">select a job</a></h2>');
+            }
+        });
+    });
+
+    //$('.activated-' + jobId).remove();
 });

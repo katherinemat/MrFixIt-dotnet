@@ -10,13 +10,16 @@
     <h4>Hello Worker @Model.FirstName @Model.LastName. You are Logged In</h4>
     <div class="row">
         <div class="col-xs-4">
-            <h3>ALL JOBS:</h3>
+            <h3>UNSTARTED JOBS:</h3>
             @foreach (var Job in Model.Jobs)
             {
-                <div class="all-@Job.JobId">
-                    <h4>@Job.Title</h4>
-                    <button class="activate-job" value="@Job.JobId">Start working on this job</button>
-                </div>
+                if (@Job.Pending == false && @Job.Completed == false)
+                {
+                    <div class="unstarted-@Job.JobId">
+                        <h4>@Job.Title</h4>
+                        <button class="activate-job" value="@Job.JobId">Start working on this job</button>
+                    </div>
+                }
             }
         </div>
 
@@ -28,6 +31,7 @@
                 {
                     <div class="activated-@Job.JobId">
                         <h4>@Job.Title</h4>
+                        <button class="complete-job" value="@Job.JobId">Mark job complete</button>
                     </div>
                 }
             }
@@ -43,8 +47,10 @@
                     <h4>@Job.Title</h4>
                 }
             }
+            <div class="temporary-completed-job"></div>
         </div>
     </div>
+    <div class="worker-available">
         @if (Model.Avaliable)
         {
             <h2>You don't have any activated jobs. Please @Html.ActionLink("select a job", "Index", "Jobs").</h2>
@@ -53,4 +59,5 @@
         {
             <h3>Only one job can be activated at a time. Please complete your activated job to begin working on another.</h3>
         }
+    </div>
 }
