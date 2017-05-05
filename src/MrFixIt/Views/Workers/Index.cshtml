@@ -7,21 +7,50 @@
 @if (User.Identity.IsAuthenticated)
 {
 
-    <div class="text-center">
-        <h4>Hello Worker @Model.FirstName @Model.LastName. You are Logged In</h4>
-        <h3>Your Current Jobs:</h3>
-        @foreach (var Job in Model.Jobs)
-        {
-            <h5>@Job.Title</h5>
+    <h4>Hello Worker @Model.FirstName @Model.LastName. You are Logged In</h4>
+    <div class="row">
+        <div class="col-xs-4">
+            <h3>ALL JOBS:</h3>
+            @foreach (var Job in Model.Jobs)
+            {
+                <div class="all-@Job.JobId">
+                    <h4>@Job.Title</h4>
+                    <button class="activate-job" value="@Job.JobId">Start working on this job</button>
+                </div>
+            }
+        </div>
 
-        }
+        <div class="col-xs-4">
+            <h3>ACTIVATED:</h3>
+            @foreach (var Job in Model.Jobs)
+            {   
+                if (@Job.Pending == true)
+                {
+                    <div class="activated-@Job.JobId">
+                        <h4>@Job.Title</h4>
+                    </div>
+                }
+            }
+            <div class="temporary-activated-job"></div>
+        </div>
+
+        <div class="col-xs-4">
+            <h3>COMPLETED:</h3>
+            @foreach (var Job in Model.Jobs)
+            {
+                if (@Job.Completed == true)
+                {
+                    <h4>@Job.Title</h4>
+                }
+            }
+        </div>
+    </div>
         @if (Model.Avaliable)
         {
-            <h2>Please @Html.ActionLink("select a job", "Index", "Jobs").</h2>
+            <h2>You don't have any activated jobs. Please @Html.ActionLink("select a job", "Index", "Jobs").</h2>
         }
         else
         {
-            <p>You are already assigned to a job.</p>
+            <h3>Only one job can be activated at a time. Please complete your activated job to begin working on another.</h3>
         }
-    </div>
 }

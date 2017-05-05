@@ -13,7 +13,6 @@
 
     $('.confirm-claim-job').click(function (event) {
         var jobId = this.value;
-        console.log(jobId);
         $.ajax({
             url: '/Jobs/ClaimConfirmed/' + jobId,
             type: 'POST',
@@ -25,8 +24,23 @@
                 var lastName = result.worker.lastName;
 
                 $('.job-' + jobId).html('<h2>' + result.Title + '</h2><p>' + description + '</p><p>This job is claimed by ' + firstName + ' ' + lastName + '</p>');
-
             }
         });
     });
+
+    $('.activate-job').click(function (event) {
+        var jobId = this.value;
+        console.log(jobId);
+        $.ajax({
+            url: '/Jobs/Activate/' + jobId,
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+                $('.temporary-activated-job').html('<h4>' + result.title + '</h4>');
+                console.log(result);
+            }
+        });
+    });
+
+    //$('.all-' + jobId).remove();
 });

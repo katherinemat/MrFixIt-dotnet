@@ -19,7 +19,10 @@
         {
             <p class="is-claimed">
                 This job is unclaimed.
-                <button class="claim-job" value="@Job.JobId">Claim</button>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button class="claim-job" value="@Job.JobId">Claim</button>
+                }
             </p>
         }
         else
