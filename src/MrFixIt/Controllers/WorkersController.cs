@@ -24,6 +24,7 @@ namespace MrFixIt.Controllers
             }
         }
 
+        //right now, even if a worker object is already created by the signed-in user, they can access the create page by manually typing in the url. I've tried to create two workers singed into the same user account: creates multiple entries in db with same username, but the views still work. I'm assuming its because FIRSTordefault grabs the one that was created first. Still, this is a loophole that we should close.
         public IActionResult Create()
         {
             return View();
