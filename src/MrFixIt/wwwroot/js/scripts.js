@@ -18,12 +18,12 @@
             type: 'POST',
             dataType: 'json',
             success: function (result) {
-                var title = result.Title;
+                var title = result.title;
                 var description = result.description;
                 var firstName = result.worker.firstName;
                 var lastName = result.worker.lastName;
 
-                $('.job-' + jobId).html('<h2>' + result.Title + '</h2><p>' + description + '</p><p>This job is claimed by ' + firstName + ' ' + lastName + '</p>');
+                $('.job-' + jobId).html('<h2>' + result.title + '</h2><p>' + description + '</p><p>This job is claimed by ' + firstName + ' ' + lastName + '</p>');
             }
         });
     });
