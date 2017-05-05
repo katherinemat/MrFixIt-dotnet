@@ -1,7 +1,7 @@
 # Mr Fix-It
 #### A repair technician job service.
 
-#### By _**Katherine Matthews**_
+#### By _**Katherine Matthews**, 5.5.2017_
 
 ## Description
 
