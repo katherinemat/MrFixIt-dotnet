@@ -11,17 +11,16 @@
         });
     });
 
-    $('.edit-cupcake').submit(function (event) {
-        event.preventDefault();
+    $('.confirm-claim-job').click(function (event) {
+        var jobId = this.value;
+        console.log(jobId);
         $.ajax({
-            url: 'Cupcake/Edit',
+            url: '/Jobs/ClaimConfirmed/' + jobId,
             type: 'POST',
             dataType: 'json',
-            data: $(this).serialize(),
             success: function (result) {
                 var editedCupcake = result.name;
-                var cupcakeId = result.id.toString();
-                $('#' + cupcakeId).text(editedCupcake);
+                console.log(result);
             }
         });
     });

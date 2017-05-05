@@ -6,12 +6,7 @@
 @model MrFixIt.Models.Job
 
 <h3>Are you sure you want this job?</h3>
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.JobId)
-    @Html.HiddenFor(model => model.Title)
-    @Html.HiddenFor(model => model.Description)
 
-    <input type="submit" value="Claim This Job" />
-}
+<button class="btn confirm-claim-job" value="@Model.JobId">Claim</button>
+
 <p>@Html.ActionLink("Back to list", "Index")</p>
