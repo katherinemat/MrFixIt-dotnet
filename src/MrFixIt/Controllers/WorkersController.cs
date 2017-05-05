@@ -6,14 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using MrFixIt.Models;
 using Microsoft.EntityFrameworkCore;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace MrFixIt.Controllers
 {
     public class WorkersController : Controller
     {
         private MrFixItContext db = new MrFixItContext();
-        // GET: /<controller>/
         public IActionResult Index()
         {
             var thisWorker = db.Workers.Include(i =>i.Jobs).FirstOrDefault(i => i.UserName == User.Identity.Name);
@@ -36,6 +33,8 @@ namespace MrFixIt.Controllers
         [HttpPost]
         public IActionResult Create(Worker worker)
         {
+            //is this the only connection between the two tables? 
+            //the two classes of user and worker are linked forever once made. unless we wanted to add functionality that allows user to disassociate two classes
             worker.UserName = User.Identity.Name;
             db.Workers.Add(worker); 
             db.SaveChanges();
