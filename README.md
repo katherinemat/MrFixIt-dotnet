@@ -34,7 +34,7 @@ NEXT UP
 
 ## Known Bugs
 
-User has to reload page in-between clicking on button to mark a job started and completed. This is because jQuery event listener that marks a job completed is attached to a dynamically-created element from another jQuery command. Another problem I'd like to fix is that a user can add multiple jobs to the activated column. Only one job will be activated at a time in the back-end, but the views don't update dynamically to reflect that.
+User has to reload page in-between clicking on button to mark a job started and completed. This is because jQuery event listener that marks a job completed is attached to a dynamically-created element from another jQuery command. Another problem I'd like to fix is that a user can add multiple jobs to the activated column. Only one job will be activated at a time in the back-end, but the views don't update dynamically to reflect that. I also found styling difficult. In order to check my first several CSS changes, I had to clear Chrome's history and restart the server. 
 
 ## Technologies Used
 
