@@ -34,7 +34,7 @@ NEXT UP
 
 ## Known Bugs
 
-None.
+User has to reload page in-between clicking on button to mark a job started and completed. This is because jQuery event listener that marks a job completed is attached to a dynamically-created element from another jQuery command.  
 
 ## Technologies Used
 
