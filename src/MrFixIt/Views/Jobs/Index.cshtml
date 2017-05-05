@@ -8,6 +8,7 @@
     @Html.ActionLink("Add a new job", "Create")
 </div>
 
+
 @foreach (var Job in Model)
 {
     <div class="job-@Job.JobId">
@@ -16,7 +17,7 @@
 
         @if (Job.Worker == null)
         {
-            <p>
+            <p class="is-claimed">
                 This job is unclaimed.
                 <button class="claim-job" value="@Job.JobId">Claim</button>
             </p>
